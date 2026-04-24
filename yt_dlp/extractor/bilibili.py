@@ -782,7 +782,7 @@ class BiliBiliIE(BilibiliBaseIE):
 
         aid = video_data.get('aid')
         old_video_id = format_field(aid, None, f'%s_part{part_id or 1}')
-        cid = traverse_obj(video_data, ('cid'), ('pages', part_id - 1, 'cid'), ('embedPlayer', 'cid'))
+        cid = traverse_obj(video_data, ('cid',), ('pages', (part_id or 1) - 1, 'cid'), ('embedPlayer', 'cid'))
 
         festival_info = {}
         if is_festival:
